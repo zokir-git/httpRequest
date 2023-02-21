@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const studentRouter = require("./routes/student");
+const bookRouter = require("./routes/book");
 
 mongoose.set("strictQuery", false);
 mongoose.connect(
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/students", studentRouter);
+app.use("/api/books", bookRouter);
 
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
