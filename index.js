@@ -1,0 +1,19 @@
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const studentRouter = require("./routes/student");
+
+mongoose.set("strictQuery", false);
+mongoose.connect(
+  "mongodb+srv://zokir:g0diPXvl7AFWYNqq@cluster0.ltslkgv.mongodb.net/FirstDB?retryWrites=true&w=majority"
+);
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+app.use("/api/students", studentRouter);
+
+app.listen(3000, () => {
+  console.log("Server is listening on port 3000");
+});
