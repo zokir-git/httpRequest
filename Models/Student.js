@@ -9,10 +9,12 @@ const StudentSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     age: {
       type: Number,
       required: false,
+      default: null,
     },
   },
   { timestamps: true }

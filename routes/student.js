@@ -4,6 +4,12 @@ const Student = require("../Models/Student");
 //POST
 router.post("/", async (req, res) => {
   try {
+    const isExist = await Student.findOne({ email: req.body.email });
+    if (isExist) {
+      res.status(409).json("Given email already exists");
+      return;
+    }
+
     const student = new Student({
       name: req.body.name,
       email: req.body.email,
